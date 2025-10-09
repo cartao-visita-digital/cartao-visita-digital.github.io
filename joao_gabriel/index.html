@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+   <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+   <!-- Metatags Open Graph -->
+   <meta property="og:title" content="Cartão de Visita Digital do João Gabriel" />
+   <meta property="og:description" content="Cientista da Computação - Celular, WhatsApp, E-mail e Redes Sociais" />
+   <meta property="og:image" content="https://www.professionalrj.com.br/clientes/pfs/joao_gabriel/cartao_visita_digital/og_image.png" />
+   <meta property="og:type" content="website" /> 
+   <meta property="og:url" content="https://www.professionalrj.com.br/clientes/pfs/joao_gabriel/cartao_visita_digital/index.php" />
+
+   <title>Cartão de Visita — João Gabriel</title>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+   <style>
+      :root                                         { --card-grad-1: #cca49d; --card-grad-2: #bf6f7f; --card-grad-3: #9aaadb; --text: #1d1d1f; --muted: #6b7280; --accent: #ff6a00;
+                                                      --radius: 24px; }
+
+      *                                             { box-sizing: border-box; }
+      body                                          { margin: 0; background: #e3dede; color: var(--text); font: 16px/1.35 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; }
+
+      .body-backup                                  { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif ;
+                                                      /* Font-size responsivo e legível */ font-size: clamp(1rem, 1.1vw + 0.2rem, 1.2rem); line-height: 1.5; }
+
+      body::before                                  { content: ""; position: fixed; inset: 0; background: none;
+                                                      opacity: 0.2; pointer-events: none; }
+
+      .wrap                                         { min-height: 100vh; display: flex; align-items: center; justify-content: center; margin: 0px; }
+
+      .phone                                        { width: min(420px,92vw); aspect-ratio: auto; position: relative; border-radius: 36px; margin: 0; padding: 4px ;
+                                                      background: linear-gradient(360deg,var(--card-grad-1) 30%, var(--card-grad-2) 50%, var(--card-grad-3) 80%);
+                                                      box-shadow: 0 20px 60px rgba(0,0,0,0.25); overflow: hidden; height: 100vh;
+                                                      background-image: url('fundo_celular.jpg'); background-size: 100% 100%; }
+
+      .phone-parte1                                 { height: 84vh; padding: 10px 14px; /* background-color: red;   */ }
+      .phone-parte2                                 { height: 16vh; padding: 10px 14px; /* background-color: green; */ }
+
+      .phone::after                                 { content: ""; position: absolute; inset :0; background-image: var(--phone-bg-img, none);
+                                                      background-position: center; background-size: cover; background-repeat: no-repeat;
+                                                      opacity: var(--phone-bg-opacity, .18); /* .18 = Degradê, 1 = Imagem */
+                                                      pointer-events: none; z-index:0; }
+
+      .phone .card                                  { position: relative; z-index: 1;}
+
+      .card-backup                                  { position: absolute; inset: 0; overflow: hidden; padding2: 22px 20px 26px; }
+
+      .card                                         { position: relative; z-index: 1; padding2: 22px 20px 26px;  /* Padding normal */ }
+
+      .photo                                        { width: 180px; height: 180px; border-radius: 50%; overflow: hidden; border: 6px solid rgba(255,255,255,.75);
+                                                      box-shadow: 0 6px 18px rgba(0,0,0,.25); margin: 0 auto;
+                                                      z-index: 2; opacity: 1; transition: opacity 3s ease; }
+
+      .photo.fade-out                               { opacity: 0; }
+      .photo.fade-in                                { opacity: 1; }
+
+      .photo-icon                                   { position: absolute; bottom: -50px; left: -36px; width: 100px; height: 100px; border-radius: 50%;
+                                                      overflow: hidden; border: 3px solid rgba(255,255,255,.75); box-shadow: 0 4px 12px rgba(0,0,0,.25);
+                                                      z-index: 2; opacity: 0; transition: opacity 0.5s ease; }
+
+      .photo-icon.visible                           { opacity: 1; }
+      .photo-icon img                               { width: 100%; height: 100%; object-fit: cover; }
+
+      .photo img                                    { width: 100%; height: 100%; object-fit: cover; }
+
+      .title                                        { text-align: center; font-family: 'Share Tech Mono', monospace; font-weight: 800; font-size: 1.7rem;
+                                                      margin-top: 8px; margin-bottom: 3px; }
+
+      .subtitle                                     { text-align: center; color: Yellow; font-weight: 700; font-size: 1.2rem; margin-top: -6px; margin-bottom: -2px;
+                                                      font-family: 'Share Tech Mono', monospace;  }
+
+      .brand                                        { text-align: center; font-size: 1.2rem; }
+      .brand a                                      { color: #ff6a00; font-weight: 800; text-decoration: none; }
+
+      .contact                                      { display: grid; gap: 1px; margin-top: 6px; font-size: 1.1rem; justify-content: center;
+                                                      font-family: 'Share Tech Mono', monospace; 
+                                                      position: relative;        /* Vira referência pro vídeo */
+                                                      padding: 0;                /* Remove o padding que empurra o conteúdo */
+                                                      border-radius: 12px;       /* Arredondamento opcional */
+                                                      overflow: hidden; }
+
+      .itens                                        { display: grid; justify-content: center; margin: 0; gap: 0px; margin-top: 22px; font-size: 1.1rem; 
+                                                      font-family: 'IBM Plex Mono', monospace; font-weight: bold !important; padding: 0; border-radius: 12px;
+                                                      text-align: center; }
+
+      .grupo-video                                  { display: grid; gap: 4px; margin-top: 6px; font-size: 1.1rem; align-items: center;
+                                                      position: relative;        /* Vira referência pro vídeo */
+                                                      padding: 0;                /* Remove o padding que empurra o conteúdo */
+                                                      border-radius: 12px;       /* Arredondamento opcional */
+                                                      overflow: hidden; height: 250px; }
+
+      .grupo-video .card                            { position: relative; z-index: 1;  /* Continua acima do vídeo */ }
+
+      .grupo-video > *:not(.video-wrapper)          { position: relative; z-index: 1; padding: 0px 8px;  /* padding interno do conteúdo */ }
+
+      .line                                         { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 8px; }
+      .line a                                       { color:#111; color: yellow; text-decoration: none; font-weight: bold; }
+      .line i                                       { font-size: 1.1rem; color: #111; font-weight: bold; }
+
+      .cta-row                                      { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+      .cta                                          { font-size: 1.0rem; min-width: 150px; text-align: center; padding: 6px 16px; font-weight: 800; color: #fff;
+                                                      border: none; cursor: pointer; text-decoration: none; }
+
+      .cta-row + .cta-row                           { margin-top: 12px; }
+      .shape-rounded                                { border-radius: 18px; }
+      .shape-rect                                   { border-radius: 8px; }
+      .shape-circle                                 { border-radius: 999px; }
+
+      .social-row                                   { display: flex; gap: 20px; justify-content: center; }
+
+      .social-row a                                 { display: flex; align-items: center; justify-content: center; width: 74px; height: 74px; border-radius: 6px; overflow: hidden; 
+                                                      box-shadow: 0 0px 0px rgba(0,0,0,.8); }
+      .social-row img,
+      .social-row div                               { /* Imagem ou placeholder */ width: 100%; height: 100%; object-fit: cover; }
+
+      .tap-link                                     { color: inherit; text-decoration: none; }
+
+      .circle-icon                                  { display: inline-flex; /* Centraliza o ícone dentro */ align-items: center; justify-content: center;
+                                                      width: 38px; height: 38px; border-radius: 50%; /* Deixa redondo */
+                                                      border: 2px solid #333; /* Cor da borda do círculo */ background: #f5f5f5; /* Cor de fundo opcional */
+                                                      text-decoration: none; /* Remove sublinhado */ color: #111; /* Cor do ícone */
+                                                      font-size: 1.1rem; /* Tamanho do ícone */ transition: background 0.3s, color 0.3s; }
+
+      .circle-icon:hover,
+      .circle-icon:active                           { background: gold; color: #fff; }
+
+      #outLocal i.fa-location-dot                   { color: #159b95; font-weight: bold; font-size: 1.6rem; }
+      #outRota i.fa-diamond-turn-right              { color: black;   font-weight: bold; font-size: 1.6rem; }
+
+      .top-icons-backup                             { position: absolute; top: 22px; /* Mesmo padding do card */
+                                                      top: 150px; right: 14px; /* Encosta no lado direito */
+                                                      display: flex; gap: 10px; z-index: 10; }
+
+      .top-icons                                    { position: absolute; top: 222px; right: 18px; display: flex;
+                                                      flex-direction: column; /* Ícones em coluna */
+                                                      align-items: flex-end;  /* Alinha à direita */
+                                                      gap: 10px; z-index: 10; }
+
+      .grid-1                                       { display: grid; grid-template-columns: 1fr; gap: 10px; align-items: center; }
+      .grid-2                                       { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: center; }
+      .grid-3                                       { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: center; }
+      .grid-4                                       { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; align-items: center; }
+      .grid-5                                       { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 10px; align-items: center; }
+
+      .cta.shape-rounded[href*="minhaloja"]         { background: linear-gradient(145deg, #ff6a00, #ff4500); color: #00f; /* texto azul */ font-weight: 900;
+                                                      /* Contorno branco uniforme ao redor */
+                                                      text-shadow: 
+                                                         2px  2px 0px #fff,  /* Inferior direito */  -2px -2px 0px #fff,  /* Superior esquerdo */
+                                                         2px -2px 0px #fff,  /* Superior direito */  -2px  2px 0px #fff,  /* Inferior esquerdo */
+                                                         0    2px 0   #fff,  /* Inferior */           0   -2px 0   #fff,  /* Superior */
+                                                         2px  0   0   #fff,  /* Direita */           -2px  0   0   #fff,  /* Esquerda */
+                                                         0    0   4px rgba(255,255,255,0.6);                              /* Brilho suave central */
+                                                      box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: transform 0.2s, box-shadow 0.2s, text-shadow 0.2s; }
+
+      /* Hover animado */
+      .cta.shape-rounded[href*="minhaloja"]:hover,
+      .cta.shape-rounded[href*="minhaloja"]:active  { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+                                                      text-shadow: 
+                                                         3px 3px 0px #fff, -3px -3px 0px #fff, 3px -3px 0px #fff, -3px 3px 0px #fff, 0 3px 0 #fff,
+                                                         0 -3px 0 #fff, 3px 0 0 #fff, -3px 0 0 #fff,
+                                                         0 0 6px rgba(255,255,255,0.7);                                   /* Brilho central aumentado */ }
+
+      .contact a, .itens a, .subtitle               { font-weight: 800; text-decoration: none;
+                                                      /* Contorno estilo legenda */
+                                                      text-shadow: 
+                                                         2px  2px 0   #000,                    /* Sombra inferior direita  */
+                                                        -2px -2px 0   #000,                    /* Sombra superior esquerda */
+                                                         2px -2px 0   #000,                    /* Sombra superior direita  */
+                                                        -2px  2px 0   #000,                    /* Sombra inferior esquerda */
+                                                         0    0   6px rgba(0,0,0,0.8);         /* Brilho suave preto ao redor */ }
+
+      .contact i                                    { font-weight: 800; text-decoration: none;
+                                                      /* Contorno estilo legenda */
+                                                      text-shadow: 
+                                                         2px  2px 0   White,                   /* Sombra inferior direita  */
+                                                        -2px -2px 0   White,                   /* Sombra superior esquerda */
+                                                         2px -2px 0   White,                   /* Sombra superior direita  */
+                                                        -2px  2px 0   White,                   /* Sombra inferior esquerda */
+                                                         0    0   6px rgba(255,255,255,0.8);   /* Brilho suave branco ao redor */ }
+
+      .contact a:hover, .subtitle:hover             { color: yellow;                           /* Amarelo */
+                                                      text-shadow: 
+                                                         2px  2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px  2px 0 #000, 0 0 8px rgba(0,0,0,0.9); }
+
+      .itens a:hover                                { color: yellow !important;                /* Amarelo */
+                                                      text-shadow: 
+                                                         2px  2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px  2px 0 #000, 0 0 8px rgba(0,0,0,0.9); }
+
+      .contact a                                    { color: white; }
+
+      .brand a                                      { color: #ff6a00;                          /* Cor laranja */
+                                                      font-weight: 800; text-decoration: none;
+                                                      /* Contorno estilo legenda */
+                                                      text-shadow: 
+                                                         2px  2px 0   #FFF,                    /* Sombra inferior direita  */
+                                                        -2px -2px 0   #FFF,                    /* Sombra superior esquerda */
+                                                         2px -2px 0   #FFF,                    /* Sombra superior direita  */
+                                                        -2px  2px 0   #FFF,                    /* Sombra inferior esquerda */
+                                                         0    0   6px rgba(255,255,255,0.8);   /* Brilho suave branco ao redor */ }
+
+      .brand a:hover, .title:hover                  { color: yellow;                           /* Amarelo */
+                                                      text-shadow: 
+                                                         2px  2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px  2px 0 #000, 0 0 8px rgba(0,0,0,0.9); }
+
+      .title                                        { color: Aqua;
+                                                      font-weight: 800; text-decoration: none;
+                                                      /* Contorno estilo legenda */
+                                                      text-shadow: 
+                                                         2px  2px 0   DarkSlateGray,               /* Sombra inferior direita  */
+                                                        -2px -2px 0   DarkSlateGray,               /* Sombra superior esquerda */
+                                                         2px -2px 0   DarkSlateGray,               /* Sombra superior direita  */
+                                                        -2px  2px 0   DarkSlateGray,               /* Sombra inferior esquerda */
+                                                         0    0   6px rgba(255,255,255,0.8);   /* Brilho suave branco ao redor */ }
+
+      @media (orientation: portrait)
+         {
+          .phone                                    { width: 92vw; }
+         }
+
+      @media (max-width: 369px)
+         {
+          .title                                    { font-size: 1.6rem; }
+         }
+
+      @media (max-height: 640px)
+        {
+         /* Minimizar "estouros" verticais em dispositivos com pouca altura */
+         body                                       { line-height: 1.3;  /* Mais compacto */ }
+
+         h1, h2, h3                                 { font-size: 90%;    /* Títulos menores */
+                                                      margin: 0.5em 0;   /* Menos espaço vertical */ }
+
+         p                                          { margin: 0.5em 0; }
+
+         .contact                                   { font-size: 99%; }
+         .itens                                     { margin-top: 14px; }
+
+         .social-row img, .social-row div           { width: 80%;        /* Ou um valor fixo, ex: 40px */
+                                                      height: auto;      /* Mantém a proporção */ }
+
+         /* .grupo-video, .video-wrapper               { aspect-ratio: 16 / 9; max-height: 200px;  width: 100%; } */
+        }
+
+      @media (min-height: 720px)
+        {
+         .itens                                     { font-size: 120%; }
+        }
+
+      @media (min-width: 768px) and (orientation: portrait)
+         {
+          /* Melhor responsividade para iPad e afins */
+          html                                      { font-size: clamp(20px, 2vw, 24px); }
+
+          .title                                    { font-size: 2.2rem; }
+          .subtitle                                 { font-size: 1.6rem; }
+          .brand                                    { font-size: 1.6rem; }
+          .contact                                  { font-size: 1.3rem; }
+          .cta                                      { font-size: 1.2rem; }
+          .circle-icon                              { font-size: 1.3rem; }
+          #outLocal i.fa-location-dot               { font-size: 1.9rem; }
+          #outRota i.fa-diamond-turn-right          { font-size: 1.9rem; }
+          .itens                                    { font-size: 1.5rem; }
+         }
+
+      @media print
+         {
+          @page                                     { size: 90mm 159mm; margin: 0; }
+
+          html, body                                { width: 90mm; height: 159mm; margin: 0 !important; padding: 0 !important;
+                                                      overflow: hidden !important; background: none; }
+
+          .wrap, .phone                             { width: 100%; height: 100%; box-shadow: none; page-break-after: avoid;
+                                                      page-break-before: avoid; page-break-inside: avoid; }
+
+          .title                                    { margin-top: -18px; }
+          .itens                                    { font-size: 1.1rem; }
+          .top-icons                                { top: 150px; right: 28px; }
+
+          .grupo-video                              { margin-top: -24px; }
+
+          /* Força o iframe gerado pelo YouTube a sumir, mas mantendo o espaço (graças ao .video-wrapper) */
+          iframe                                    { display: none !important; }
+
+          .poster-print                             { display: block !important;       /* Torna a tag <img> visível */
+                                                      display: none !important;        /* Torna a tag <img> invisível */
+                                                      position: absolute !important; top: 30px !important; left: 0 !important; width: 100% !important;
+                                                      height: 190px !important;        /* Define altura fixa */
+                                                      object-fit: cover !important;    /* Garante que a imagem preencha a área sem distorção */
+                                                      z-index: 0 !important;           /* Fica ATRÁS da Foto (z-index: 1) */
+                                                      pointer-events: none;            /* Permite clicar nos elementos acima */
+                                                      overflow: hidden;
+                                                      border-radius: 10%;              /* Mantém borda arredondada do card */
+                                                      box-sizing: border-box; }
+         }
+
+      /* Vídeo como plano de fundo */
+      .video-wrapper                                { position: absolute; top: 0; left: 0; width: 100%;
+                                                      height: 250px;                   /* Define altura fixa */
+                                                      inset: 0;                        /* Cobre toda a área do contato */
+                                                      z-index: 0;                      /* Fica atrás dos outros elementos */
+                                                      pointer-events: none;            /* Permite clicar nos elementos acima */
+                                                      overflow: hidden;
+                                                      border-radius: inherit;          /* Mantém borda arredondada do card */
+                                                      box-sizing: border-box;          /* Importante */
+                                                      opacity: 1.0; }
+
+      .video-wrapper iframe                         { position: absolute; width: 100%; height: 100%; border: 0;
+                                                      inset: 0;                        /* top:0, left:0, width:100%, height:100% */
+                                                      opacity: 1;                      /* Totalmente visível, valor entre 0 (invisível) e 1 (opaco) */
+                                                      object-fit: cover;               /* Cobre todo o container sem distorcer */
+                                                      pointer-events: none;            /* Permite clicar nos elementos acima */ }
+
+      .poster-print                                 { display: none; }
+   </style>
+</head>
+
+<body>
+   <div class="wrap">
+      <div class="phone">
+         <div class="phone-parte1">
+            <div class="top-icons">
+               <div><a class="circle-icon" id="outRota" href="https://www.professionalrj.com.br/clientes/pfs/joao_gabriel/cartao_visita_digital/Adicionar_Contato-Joao_Gabriel.vcf"
+               target="_blank"><i class="fa-regular fa-id-card" style="font-size: 120%; color: red;"></i></a></div>
+            </div>
+
+            <div class="grupo-video">
+               <!-- Vídeo dentro do formulário -->
+               <div class="video-wrapper" id="videoWrapper"></div>
+               <img class="poster-print" id="posterPrint" src="https://www.professionalrj.com.br/cartao_visita_digital/exemplos/video_poster_2.jpg" alt="Poster do Vídeo" />
+
+               <div class="card">
+                  <a class="tap-link" href="https://wa.me/5521996609291" target="_blank"><figure class="photo"><img src="Joao_Gabriel.png" alt=""></figure></a>
+                  <a class="tap-link" href="https://wa.me/5521996609291" target="_blank"><figure class="photo-icon"><img src="Joao_Gabriel.png" alt=""></figure></a>
+               </div>
+            </div>
+
+            <div class="card">
+               <a class="tap-link" href="https://wa.me/5521996609291" target="_blank"><h1 class="title">João Gabriel Moren</h1></a>
+               <a class="tap-link" href="https://wa.me/5521996609291" target="_blank"><p class="subtitle">Cientista da Computação</p></a>
+               <div class="brand" style="display: none;"><a href="https://www.empresa.com.br" target="_blank">Empresa / Pessoal</a></div>
+            </div>
+
+            <div class="contact">
+               <div class="line">
+                  <i class="fa-solid fa-phone" style="color: green;"></i>
+                  <a href="tel:+5521996609291" style="font-size: 120%;">(21) 99660-9291</a>
+               </div>
+               <div class="line">
+                  <i class="fa-regular fa-envelope" style="font-size: 110%; color: blue;"></i>
+                  <a href="mailto:jgpmoren@gmail.com" style="font-size: 120%;">jgpmoren@gmail.com</a>
+               </div>
+            </div>
+
+            <div class="itens">
+               <a href="https://wa.me/5521996609291" style="color: #d5556f;">Programação C++/Dart/Python</a>
+               <a href="https://wa.me/5521996609291" style="color: #5478e4; letter-spacing: -0.1px;">Banco de Dados MongoDB/MySQL</a>
+               <a href="https://wa.me/5521996609291" style="color: #429667;">Desenvolvimento Web</a>
+               <a href="https://wa.me/5521996609291" style="color: #ff9719;">React.TS</a>
+            </div>
+         </div>
+
+         <div class="phone-parte2">
+            <div class="social-row">
+               <a target="_blank" href="https://api.whatsapp.com/send?phone=5521996609291"><img src="../assets/img/icone_whatsapp.png" alt=""></a>
+               <a target="_blank" href="https://www.linkedin.com/in/jg-moren"><img src="../assets/img/icone_linkedin.png" alt=""></a>
+               <a target="_blank" href="https://github.com/jg-moren"><img src="../assets/img/icone_github.png" alt=""></a>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <script>
+      // Carrega a API do YouTube
+      var tag            = document.createElement('script');
+      tag.src            = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      var player;
+
+      // Definição dos segmentos (início, fim e modo)
+      const segments =
+         [
+          { start:  0, end: 7,  mode: "photo" },  // Foto grande
+          { start:  7, end: 15, mode: "icon"  },  // Ícone
+          { start: 15, end: 19, mode: "photo" },  // Foto grande
+          { start: 19, end: 26, mode: "icon"  },  // Ícone
+          { start: 26, end: 30, mode: "photo" },  // Foto grande
+          { start: 30, end: 36, mode: "icon"  },  // Ícone
+          { start: 36, end: 50, mode: "photo" },  // Foto grande
+          { start: 51, end: 56, mode: "icon"  },  // Ícone
+          { start: 56, end: 64, mode: "photo" },  // Foto grande
+         ];
+
+      // { start: 31, end: 46, mode: "photo" }   // Foto grande
+
+      function onYouTubeIframeAPIReady()
+         {
+          // https://youtu.be/5S3tXuiKW0k
+          player = new YT.Player('videoWrapper',
+             {
+              videoId: '5S3tXuiKW0k', // ID do vídeo
+              playerVars:
+                 {
+                  autoplay      : 1,
+                  mute          : 1,
+                  loop          : 1,
+                  playlist      : '5S3tXuiKW0k',
+                  controls      : 0,
+                  rel           : 0,
+                  modestbranding: 1
+                 },
+              events:
+                 {
+                  onReady: function (event)
+                     {
+                      event.target.setPlaybackRate(0.6);
+                      event.target.playVideo();
+
+                      const iframe = event.target.getIframe();
+                      iframe.setAttribute
+                         (
+                          "allow",
+                          "autoplay; encrypted-media; clipboard-write; gyroscope; picture-in-picture; web-share"
+                         );
+
+                      iniciarSegmentos();
+                     }
+                 }
+             });
+         }
+
+      function iniciarSegmentos()
+         {
+          const photo     = document.querySelector(".photo");
+          const photoIcon = document.querySelector(".photo-icon");
+
+          // Garante classes corretas
+          photo.classList.add("fade-in");
+          photoIcon.classList.remove("visible");
+
+          function aplicarModo(mode)
+             {
+              if (mode === "photo")
+                 {
+                  photo.classList.remove("fade-out");
+                  photo.classList.add("fade-in");
+                  photoIcon.classList.remove("visible");
+                 }
+              else if (mode === "icon")
+                 {
+                  photo.classList.remove("fade-in");
+                  photo.classList.add("fade-out");
+ 
+                  // Só mostra ícone depois do fade
+                  setTimeout(() =>
+                     {
+                      if (photo.classList.contains("fade-out"))
+                         {
+                          photoIcon.classList.add("visible");
+                         }
+                     }, 3000);  // Tempo do fade
+                 }
+             }
+
+          let segmentoAtual = -1;
+
+          function verificarSegmento()
+             {
+              if (!player || player.getCurrentTime === undefined) return;
+
+              const tempo = player.getCurrentTime();
+              let encontrado = false;
+
+              for (let i = 0; i < segments.length; i++)
+                 {
+                  const seg = segments[i];
+
+                  if (tempo >= seg.start && tempo < seg.end)
+                     {
+                      if (segmentoAtual !== i)
+                         {
+                          segmentoAtual = i;
+                          aplicarModo(seg.mode);
+                         }
+
+                      encontrado = true;
+                      break;
+                     }
+                 }
+
+              // Se vídeo passar do último segmento → continua mostrando último estado
+              if (!encontrado && segmentoAtual !== -1)
+                 {
+                  // Mantém o último modo ativo
+                 }
+
+              requestAnimationFrame(verificarSegmento);
+             }
+
+          verificarSegmento();
+         }
+</script>
+
+</body>
+</html>
