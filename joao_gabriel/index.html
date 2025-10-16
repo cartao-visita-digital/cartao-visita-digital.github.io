@@ -315,6 +315,16 @@
                                                       pointer-events: none;            /* Permite clicar nos elementos acima */ }
 
       .poster-print                                 { display: none; }
+
+      /* Popup de vídeo fullscreen */
+      #popupVideo                                   { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.95); z-index: 9999;
+                                                      justify-content: center; align-items: center; }
+
+      #popupVideo iframe                            { width: 100vw; height: 100vh; max-width: none; max-height: none; border: none; border-radius: 0;
+                                                      object-fit: cover; }
+
+      #popupVideo .fechar                           { position: absolute; top: 10px; right: 18px; font-size: 2.4rem; color: white; cursor: pointer;
+                                                      z-index: 10000; }
    </style>
 </head>
 
@@ -372,6 +382,9 @@
          </div>
       </div>
    </div>
+
+   <!-- Popup de vídeo -->
+   <div id="popupVideo"></div>
 
    <script>
       // Carrega a API do YouTube
@@ -504,7 +517,41 @@
 
           verificarSegmento();
          }
-</script>
+
+      // ********
+
+      const popupVideo = document.getElementById("popupVideo");
+      const fecharBtn  = popupVideo.querySelector(".fechar");
+
+      window.addEventListener("orientationchange", () =>
+         {
+          const orientacao =
+             (screen.orientation && screen.orientation.type) ||
+             (window.orientation === 90 || window.orientation === -90 ? "landscape" : "portrait");
+
+          if (orientacao.includes("landscape")) { abrirPopupVideo(); } else { fecharPopupVideo(); }
+         });
+
+      function abrirPopupVideo()
+         {
+          const currentTime        = player.getCurrentTime();
+          popupVideo.style.display = "flex";
+
+          popupVideo.innerHTML     = `
+             <span class="fechar">&times;</span>
+             <iframe src="https://www.youtube.com/embed/5S3tXuiKW0k?autoplay=1&mute=1&loop=1&playlist=5S3tXuiKW0k&modestbranding=1&controls=1&rel=0&start=${Math.floor(currentTime)}"
+             allow="autoplay; encrypted-media"></iframe>
+          `;
+
+          popupVideo.querySelector(".fechar").addEventListener("click", fecharPopupVideo);
+         }
+
+      function fecharPopupVideo()
+         {
+          popupVideo.style.display = "none";
+          popupVideo.innerHTML = "";
+         }
+   </script>
 
 </body>
 </html>
