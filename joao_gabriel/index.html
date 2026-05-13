@@ -539,8 +539,8 @@
 
           popupVideo.innerHTML     = `
              <span class="fechar">&times;</span>
-             <iframe src="https://www.youtube.com/embed/5S3tXuiKW0k?autoplay=1&mute=1&loop=1&playlist=5S3tXuiKW0k&modestbranding=1&controls=1&rel=0&start=${Math.floor(currentTime)}"
-             allow="autoplay; encrypted-media"></iframe>
+             <iframe src="https://www.youtube.com/embed/5S3tXuiKW0k?mute=0&loop=1&playlist=5S3tXuiKW0k&modestbranding=1&controls=1&rel=0&start=${Math.floor(currentTime)}"
+             allow="autoplay; encrypted-media allowfullscreen"></iframe>
           `;
 
           popupVideo.querySelector(".fechar").addEventListener("click", fecharPopupVideo);
